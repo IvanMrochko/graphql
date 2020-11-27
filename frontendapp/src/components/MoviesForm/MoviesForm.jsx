@@ -54,7 +54,6 @@ class MoviesForm extends React.Component {
     } = this.props;
     const { name, genre, rate, directorId, watched } = selectedValue;
     const { directors = [] } = data;
-
     return (
       <Dialog
         onClose={this.handleClose}
