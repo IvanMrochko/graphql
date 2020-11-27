@@ -105,51 +105,51 @@ const Mutation = new GraphQLObjectType({
         return Movies.findByIdAndDelete(args.id);
       },
     },
-  },
-  updateDirector: {
-    type: DirectorType,
-    args: {
-      id: { type: GraphQLID },
-      name: { type: new GraphQLNonNull(GraphQLString) },
-      age: { type: new GraphQLNonNull(GraphQLInt) },
-      watched: { type: new GraphQLNonNull(GraphQLBoolean) },
-      rate: { type: GraphQLInt },
-    },
-    resolve(parent, args) {
-      return Directors.findByIdAndUpdate(
-        args.id,
-        {
-          $set: {
-            name: args.name,
-            age: args.name,
-            watched: args.watched,
-            rate: args.rate,
+    updateDirector: {
+      type: DirectorType,
+      args: {
+        id: { type: GraphQLID },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLInt) },
+      },
+      resolve(parent, args) {
+        return Directors.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              name: args.name,
+              age: args.age,
+            },
           },
-        },
-        { new: true }
-      );
+          { new: true }
+        );
+      },
     },
-  },
-  updateMovie: {
-    type: MovieType,
-    args: {
-      id: { type: GraphQLID },
-      name: { type: new GraphQLNonNull(GraphQLString) },
-      genre: { type: new GraphQLNonNull(GraphQLString) },
-      directorId: { type: GraphQLID },
-    },
-    resolve(parent, args) {
-      return Movies.findByIdAndUpdate(
-        args.id,
-        {
-          $set: {
-            name: args.name,
-            genre: args.genre,
-            directorId: args.directorId,
+    updateMovie: {
+      type: MovieType,
+      args: {
+        id: { type: GraphQLID },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        watched: { type: new GraphQLNonNull(GraphQLBoolean) },
+        rate: { type: GraphQLInt },
+        directorId: { type: GraphQLID },
+      },
+      resolve(parent, args) {
+        return Movies.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              name: args.name,
+              genre: args.genre,
+              directorId: args.directorId,
+              rate: args.rate,
+              watched: args.watched,
+            },
           },
-        },
-        { new: true }
-      );
+          { new: true }
+        );
+      },
     },
   },
 });
