@@ -1,13 +1,14 @@
 {
-  "name": "graphql-app-server",
+  "name": "graphql-test-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Frontend React and Backend Node js+ mongo full stack application",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd frontendapp && npm install && npm run build"
   },
-  "author": "",
+  "author": "Ivan Mrochko",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
