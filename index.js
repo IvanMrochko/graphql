@@ -6,7 +6,6 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-const PORT = 5000;
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, "frontendapp/build")));
@@ -40,6 +39,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/frontendapp/build/index.html"));
 });
 
-app.listen(PORT, (err) => {
-  err ? console.log(err) : console.log("Server started!");
+// Choose the port and start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Mixing it up on port ${PORT}`);
 });
